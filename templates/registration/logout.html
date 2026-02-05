@@ -1,17 +1,71 @@
 {% extends "store/base.html" %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="text-center">Logged out</h3>
-            </div>
-            <div class="card-body">
-                <p>You have been successfully logged out.</p>
-                <a href="{% url 'login' %}" class="btn btn-primary">Log in again</a>
-            </div>
-        </div>
+<style>
+    .auth-container {
+        max-width: 500px;
+        margin: 80px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border: 1px solid #e5e5e5;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    .auth-title {
+        font-size: 22px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        color: #000000;
+    }
+
+    .auth-message {
+        font-size: 14px;
+        color: #666666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .btn-auth {
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        padding: 12px 28px;
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-auth:hover {
+        background-color: #333333;
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    @media (max-width: 576px) {
+        .auth-container {
+            margin: 30px 15px;
+            padding: 30px 20px;
+        }
+
+        .auth-title {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="auth-container">
+        <h1 class="auth-title">Logged Out</h1>
+        <p class="auth-message">You have been successfully logged out. Thank you for shopping with us!</p>
+        <a href="{% url 'login' %}" class="btn-auth">Log In Again</a>
     </div>
 </div>
 {% endblock %}

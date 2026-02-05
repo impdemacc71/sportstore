@@ -2,94 +2,415 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motion S</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="MOTIONS - Premium sportswear and athletic apparel for performance athletes. Shop the latest collection of sports clothing, shoes, and accessories.">
+    <meta name="keywords" content="sportswear, athletic apparel, sports clothing, fitness wear, running shoes, training gear">
+    <title>MOTIONS | Premium Sportswear</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'store/css/products.css' %}">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 11px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Header */
+        .main-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000000;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 50px 12px 18px;
+            border: 1px solid #000000;
+            border-radius: 0;
+            font-size: 14px;
+            background-color: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background-color: #ffffff;
+            border-color: #000000;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .search-btn i {
+            color: #000000;
+            font-size: 18px;
+        }
+
+        /* Header Icons */
+        .header-icons {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        .header-icon {
+            position: relative;
+            color: #000000;
+            text-decoration: none;
+            font-size: 26px;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .header-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background-color: #000000;
+            padding: 0;
+        }
+
+        .nav-link-custom {
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 12px 20px !important;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            border: none !important;
+        }
+
+        .nav-link-custom:hover {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+        }
+
+        /* Main Content */
         main {
-            flex: 1;
+            min-height: calc(100vh - 400px);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .footer-link {
+            color: #cccccc;
+            text-decoration: none;
+            display: block;
+            padding: 6px 0;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #999999;
+        }
+
+        @media (max-width: 991px) {
+            .main-header .row {
+                flex-wrap: nowrap;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            .search-container {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .header-icons {
+                justify-content: flex-end;
+                align-items: center;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .main-header .row {
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .main-header .col-lg-3:first-child {
+                width: auto;
+                flex: 0 0 auto;
+            }
+
+            .main-header .col-lg-6 {
+                width: 100%;
+                order: 3;
+                flex: 0 0 100%;
+            }
+
+            .main-header .col-lg-3:last-child {
+                width: auto;
+                order: 2;
+                flex: 0 0 auto;
+                margin-left: auto;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .search-input {
+                padding: 10px 45px 10px 15px;
+                font-size: 13px;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .header-icon {
+                font-size: 22px;
+            }
+
+            .header-icons {
+                gap: 15px;
+                margin-top: 0;
+            }
+
+            .top-banner {
+                font-size: 10px;
+                padding: 6px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-footer {
+                padding: 40px 0 20px;
+                margin-top: 40px;
+            }
+
+            .footer-title {
+                font-size: 11px;
+            }
+
+            .footer-link {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #878787;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src="{% static 'store/images/logo.png' %}" alt="Motion, S" height="65">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Top Selling</a>
-                    </li>
-                </ul>
-                <form class="d-flex mx-auto" action="{% url 'product_list' %}" method="get">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q }}">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cart_detail' %}">
-                            <i class="bi bi-cart"></i> Cart
+    <!-- Top Banner -->
+    <div class="top-banner">
+        FREE Next Day Delivery over 400 QAR | We pay all duties *
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-lg-3 col-md-4">
+                    <a href="{% url 'product_list' %}" class="logo">
+                        <img src="{% static 'store/images/logo.png' %}" alt="MOTIONS">
+                    </a>
+                </div>
+
+                <!-- Search -->
+                <div class="col-lg-6 col-md-4">
+                    <form action="{% url 'product_list' %}" method="get" class="search-container">
+                        <input type="search" name="q" class="search-input" placeholder="Search for anything here..." value="{{ request.GET.q }}">
+                        <button type="submit" class="search-btn">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Icons -->
+                <div class="col-lg-3 col-md-4">
+                    <div class="header-icons justify-content-end">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="header-icon" title="Logout">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="header-icon" title="Sign In">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'cart_detail' %}" class="header-icon" title="Shopping Bag">
+                            <i class="bi bi-bag"></i>
                             {% with total_items=cart|length %}
                                 {% if total_items > 0 %}
-                                    <span class="badge bg-secondary">{{ total_items }}</span>
+                                    <span class="cart-badge">{{ total_items }}</span>
                                 {% endif %}
                             {% endwith %}
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg main-nav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border: none; filter: invert(1);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="{% url 'product_list' %}?category=women">Women</a>
                     </li>
                     <li class="nav-item">
-                        {% if user.is_authenticated %}
-                            <a class="nav-link" href="{% url 'logout' %}"><i class="bi bi-person"></i> Logout</a>
-                        {% else %}
-                            <a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person"></i> Login</a>
-                        {% endif %}
+                        <a class="nav-link-custom" href="{% url 'product_list' %}?category=men">Men</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="{% url 'product_list' %}?category=kids">Kids</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="{% url 'product_list' %}?category=sports">Sports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="{% url 'product_list' %}?category=accessories">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="{% url 'product_list' %}?category=brands">Brands</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container my-4">
+    <!-- Main Content -->
+    <main>
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer class="text-center text-lg-start mt-auto text-white" style="background-color: #878787;">
-        <div class="container p-4">
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">SportStore</h5>
-                    <p>
-                        Your one-stop shop for all sports equipment and accessories.
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Help</h5>
+                    <a href="#" class="footer-link">Returns Information</a>
+                    <a href="#" class="footer-link">Delivery Information</a>
+                    <a href="#" class="footer-link">Contact Us</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Privacy & Legal</h5>
+                    <a href="#" class="footer-link">Privacy and Cookie Policy</a>
+                    <a href="#" class="footer-link">Terms & Conditions</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Departments</h5>
+                    <a href="{% url 'product_list' %}?category=women" class="footer-link">Women's</a>
+                    <a href="{% url 'product_list' %}?category=men" class="footer-link">Men's</a>
+                    <a href="{% url 'product_list' %}?category=kids" class="footer-link">Kids</a>
+                    <a href="{% url 'product_list' %}?category=sports" class="footer-link">Sports</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">About Us</h5>
+                    <p style="color: #cccccc; font-size: 13px; line-height: 1.8;">
+                        Premium sportswear and accessories for athletes who demand the best. Quality, performance, and style in every product.
                     </p>
                 </div>
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Contact</h5>
-                    <ul class="list-unstyled">
-                        <li>Email: contact@motions.com</li>
-                        <li>Phone: +1 234 567 890</li>
-                    </ul>
-                </div>
             </div>
-        </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2026 Copyright:
-            <a class="text-white" href="/">MotionS.com</a>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MOTIONS. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

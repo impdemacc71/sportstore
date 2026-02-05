@@ -1,0 +1,146 @@
+{% extends "store/base.html" %}
+
+{% block content %}
+<style>
+    .success-page {
+        padding: 80px 0;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .success-container {
+        text-align: center;
+        max-width: 600px;
+        padding: 60px 40px;
+        background: #ffffff;
+        border: 1px solid #e5e5e5;
+    }
+
+    .success-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 30px;
+        background: #000000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .success-icon i {
+        font-size: 50px;
+        color: #ffffff;
+    }
+
+    .success-title {
+        font-size: 32px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        margin-bottom: 15px;
+        color: #000000;
+    }
+
+    .success-message {
+        font-size: 16px;
+        color: #666666;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .order-details {
+        background: #f8f8f8;
+        padding: 25px;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .order-details h3 {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        color: #000000;
+    }
+
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 14px;
+    }
+
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+
+    .detail-label {
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .detail-value {
+        font-weight: 600;
+        color: #000000;
+    }
+
+    .btn-continue {
+        display: inline-block;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 14px 40px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-continue:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: 2px solid #000000;
+        text-decoration: none;
+        transform: translateY(-2px);
+    }
+</style>
+
+    <div class="success-page">
+        <div class="success-container">
+            <div class="success-icon">
+                <i class="bi bi-check-lg"></i>
+            </div>
+            <h1 class="success-title">Order Confirmed!</h1>
+            <p class="success-message">
+                Thank you for your order, {{ order.first_name }}! We've received your order and will begin processing it shortly.
+            </p>
+
+            <div class="order-details">
+                <h3>Order Details</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Order Number:</span>
+                    <span class="detail-value">#{{ order.id }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Date:</span>
+                    <span class="detail-value">{{ order.created|date:"F d, Y" }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Method:</span>
+                    <span class="detail-value">{{ order.get_payment_method_display }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Total:</span>
+                    <span class="detail-value">{{ order.get_total_cost }} QAR</span>
+                </div>
+            </div>
+
+            <a href="{% url 'product_list' %}" class="btn-continue">Continue Shopping</a>
+        </div>
+    </div>
+{% endblock %}
