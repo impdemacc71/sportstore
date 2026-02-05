@@ -1,0 +1,482 @@
+/* ========================================
+   Flipkart-Inspired Modern E-Commerce UI
+   Clean, Simple, Professional Design
+   ======================================== */
+
+/* Product Grid - 4 Columns */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+/* Product Card - Flipkart Style */
+.product-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Product Image Container */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.product-image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-container img {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Product Card Body */
+.product-card-body {
+    padding: 14px 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+}
+
+/* Product Title - Clean Typography */
+.product-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    text-decoration: none;
+    line-height: 1.4;
+    max-height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 8px;
+}
+
+.product-title:hover {
+    color: #2874f0;
+}
+
+/* Rating - Flipkart Green Stars */
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.rating-stars {
+    background: #388e3c;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.rating-count {
+    color: #878787;
+    font-size: 12px;
+}
+
+/* Product Price - Bold Display */
+.product-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #212121;
+    margin-bottom: 6px;
+}
+
+.product-price .currency {
+    font-size: 14px;
+    vertical-align: super;
+    margin-right: 1px;
+}
+
+/* Original Price */
+.product-price-original {
+    font-size: 14px;
+    color: #878787;
+    text-decoration: line-through;
+    margin-left: 8px;
+}
+
+/* Discount Badge */
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #388e3c;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+/* Delivery Info */
+.product-delivery {
+    font-size: 12px;
+    color: #878787;
+    margin-bottom: 8px;
+}
+
+.delivery-fast {
+    color: #388e3c;
+    font-weight: 500;
+}
+
+/* Product Card Footer */
+.product-card-footer {
+    padding: 10px 16px;
+    border-top: 1px solid #f0f0f0;
+    background: #ffffff;
+}
+
+/* Buttons - Flipkart Blue */
+.btn-amazon-primary {
+    background: #fb9415;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-amazon-primary:hover {
+    background: #f8870a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.btn-amazon-secondary {
+    background: #2874f0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(40, 116, 240, 0.2);
+}
+
+.btn-amazon-secondary:hover {
+    background: #1e5cbe;
+    box-shadow: 0 4px 8px rgba(40, 116, 240, 0.3);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+/* Mobile - 2 columns */
+@media (max-width: 575.98px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .product-card-body {
+        padding: 10px 12px;
+        min-height: 85px;
+    }
+
+    .product-title {
+        font-size: 12px;
+        max-height: 34px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .btn-amazon-primary,
+    .btn-amazon-secondary {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+/* Small Tablets - 3 columns */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+}
+
+/* Tablets - 3 columns */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+}
+
+/* Desktop - 4 columns */
+@media (min-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+}
+
+/* Ultra-wide - 5 columns */
+@media (min-width: 1400px) {
+    .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+}
+
+/* ========================================
+   Section Headers - Clean Design
+   ======================================== */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212121;
+    margin: 0;
+}
+
+.section-link {
+    color: #2874f0;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    background: #f0f0f0;
+    padding: 8px 16px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.section-link:hover {
+    background: #2874f0;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ========================================
+   Hero Banner - Flipkart Blue
+   ======================================== */
+
+.hero-banner {
+    background: #2874f0;
+    color: #ffffff;
+    padding: 40px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-banner h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.hero-banner p {
+    font-size: 16px;
+    opacity: 0.95;
+    margin-bottom: 20px;
+}
+
+.btn-hero {
+    background: #ffffff;
+    color: #2874f0;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-hero:hover {
+    background: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   Out of Stock
+   ======================================== */
+
+.product-card.out-of-stock {
+    opacity: 0.6;
+}
+
+.product-card.out-of-stock::after {
+    content: 'Out of Stock';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 100;
+}
+
+/* ========================================
+   Utilities
+   ======================================== */
+
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-grid-section {
+    margin-bottom: 40px;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.2s; }
+.product-card:nth-child(5) { animation-delay: 0.25s; }
+.product-card:nth-child(6) { animation-delay: 0.3s; }
+.product-card:nth-child(7) { animation-delay: 0.35s; }
+.product-card:nth-child(8) { animation-delay: 0.4s; }
+
+/* ========================================
+   Focus States - Accessibility
+   ======================================== */
+
+.btn-amazon-primary:focus,
+.btn-amazon-secondary:focus,
+.product-title:focus {
+    outline: 2px solid #2874f0;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   Scrollbar - Minimal
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* ========================================
+   Loading Skeleton
+   ======================================== */
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
