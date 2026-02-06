@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2)mxu#7ro@0kc!vw^2d2cu4kw-ana8t#tvhy)-v6i88u=w3k7%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hafisnk123.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -119,8 +119,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Cart session ID
 CART_SESSION_ID = 'cart'
