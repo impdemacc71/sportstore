@@ -270,6 +270,11 @@
         z-index: 1;
     }
 
+    /* Product cards in New Arrivals section */
+    .new-arrivals-scroll .product-card {
+        flex: 0 0 calc((100% - 75px) / 4);
+    }
+
     /* Navigation Arrows */
     .nav-arrow {
         position: absolute;
@@ -624,7 +629,7 @@
             font-size: 11px;
         }
 
-        .new-arrival-card {
+        .new-arrivals-scroll .product-card {
             flex: 0 0 calc((100% - 50px) / 3);
         }
 
@@ -670,7 +675,7 @@
             padding-top: 100%;
         }
 
-        .new-arrival-card {
+        .new-arrivals-scroll .product-card {
             flex: 0 0 calc((100% - 20px) / 2);
         }
 
@@ -725,7 +730,7 @@
             font-size: 9px;
         }
 
-        .new-arrival-card {
+        .new-arrivals-scroll .product-card {
             flex: 0 0 calc((100% - 15px) / 2);
         }
 
@@ -765,39 +770,41 @@
         </div>
         {% else %}
         <!-- New Arrivals Section -->
-        {% with new_arrivals=products|dictsortreversed:"created_date"|slice:":10" %}
+        {% with new_arrivals=products|dictsortreversed:"created_date" %}
             {% if new_arrivals %}
             <div class="new-arrivals-section">
                 <div class="section-header">
                     <h2 class="section-title">New Arrivals</h2>
-                    <span class="section-count">{{ new_arrivals|length }}</span>
                 </div>
                 <div class="new-arrivals-wrapper">
                     <button class="nav-arrow prev" id="newArrivalsPrev">‹</button>
                     <div class="new-arrivals-scroll" id="newArrivalsScroll">
                         {% for product in new_arrivals %}
                             {% if product.is_new_arrival and product.is_in_stock %}
-                            <div class="new-arrival-card">
-                                <div class="new-arrival-image">
-                                    {% if product.image %}
-                                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                                    {% endif %}
+                            <div class="product-card">
+                                {% if product.image %}
+                                <div class="product-image-wrapper">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+
+                                    <!-- Badges -->
                                     <div class="product-badges">
-                                        <span class="badge badge-new">NEW IN</span>
+                                        {% if product.is_new_arrival %}
+                                            <span class="badge badge-new">NEW IN</span>
+                                        {% endif %}
                                     </div>
+
                                     <div class="quick-actions">
                                         <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
                                             <span>Quick View</span>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="new-arrival-info">
+                                {% endif %}
+
+                                <div class="product-info">
                                     <div class="product-brand">MOTIONS</div>
-                                    <a href="{% url 'product_detail' product.id %}" class="new-arrival-name">{{ product.name }}</a>
-                                    <div class="new-arrival-price">{{ product.price }} QAR</div>
-                                    <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
-                                        <span>Add to Bag</span>
-                                    </a>
+                                    <a href="{% url 'product_detail' product.id %}" class="product-name">{{ product.name }}</a>
+                                    <div class="product-price">{{ product.price }} QAR</div>
                                 </div>
                             </div>
                             {% endif %}
