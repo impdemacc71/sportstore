@@ -101,7 +101,7 @@ class Review(models.Model):
     )
     comment = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
-    is_approved = models.BooleanField(default=False, help_text='Review must be approved to be visible')
+    is_approved = models.BooleanField(default=True, help_text='Review must be approved to be visible')
 
     class Meta:
         ordering = ['-created_date']
