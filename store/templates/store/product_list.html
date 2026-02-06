@@ -275,6 +275,32 @@
         flex: 0 0 calc((100% - 75px) / 4);
     }
 
+    /* Add to Bag button for New Arrival cards */
+    .product-card-new-arrival .btn-add-to-bag {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 12px 20px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        margin-top: 12px;
+    }
+
+    .product-card-new-arrival .btn-add-to-bag:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: 2px solid #000000;
+        transform: translateY(-2px);
+    }
+
     /* Navigation Arrows */
     .nav-arrow {
         position: absolute;
@@ -781,7 +807,7 @@
                     <div class="new-arrivals-scroll" id="newArrivalsScroll">
                         {% for product in new_arrivals %}
                             {% if product.is_new_arrival and product.is_in_stock %}
-                            <div class="product-card">
+                            <div class="product-card product-card-new-arrival">
                                 {% if product.image %}
                                 <div class="product-image-wrapper">
                                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -805,6 +831,7 @@
                                     <div class="product-brand">MOTIONS</div>
                                     <a href="{% url 'product_detail' product.id %}" class="product-name">{{ product.name }}</a>
                                     <div class="product-price">{{ product.price }} QAR</div>
+                                    <a href="{% url 'product_detail' product.id %}" class="btn-add-to-bag">Add to Bag</a>
                                 </div>
                             </div>
                             {% endif %}
