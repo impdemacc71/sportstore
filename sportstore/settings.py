@@ -150,5 +150,5 @@ if not DEBUG:
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Cart session ID
+# Cart session ID - new setting for cart functionality
 CART_SESSION_ID = 'cart'
