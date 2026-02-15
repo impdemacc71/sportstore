@@ -1,0 +1,368 @@
+[
+{
+  "model": "store.category",
+  "pk": 1,
+  "fields": {
+    "name": "General Fitness items"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 2,
+  "fields": {
+    "name": "Smart Sport Gadgets"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 3,
+  "fields": {
+    "name": "Physical fitness items."
+  }
+},
+{
+  "model": "store.category",
+  "pk": 4,
+  "fields": {
+    "name": "Ball Sports Items"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "name": "2pcs set short sleeve",
+    "description": "Summer short sleeve white, black outfit round neck and shorts- with logo",
+    "price": "200.00",
+    "category": 1,
+    "image": "products/1tshirt.png",
+    "stock": 8,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": false,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 2,
+  "fields": {
+    "name": "Home Gym Fitness Set",
+    "description": "Workout tools include jump\r\nRope, Grip strengthener,\r\nPush up bar, Ab wheel for\r\nmuscle training",
+    "price": "200.00",
+    "category": 1,
+    "image": "products/Screenshot_2026-01-13_at_08.24.21.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 3,
+  "fields": {
+    "name": "7 pcs Grip strengthener kit",
+    "description": "Exercise finger, hand and\r\nwrist muscle",
+    "price": "70.00",
+    "category": 1,
+    "image": "products/Screenshot_2026-01-13_at_10.37.08.png",
+    "stock": 9,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 4,
+  "fields": {
+    "name": "Portable and adjustable footrest Abdominal",
+    "description": "1pcs floor standing sit-up\r\nbar, portable with mobile\r\nholder, can be used for\r\nworkout, gym and home",
+    "price": "80.00",
+    "category": 1,
+    "image": "products/Screenshot_2026-01-13_at_10.48.25.png",
+    "stock": 8,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 5,
+  "fields": {
+    "name": "Resistance Bands (24lbs, 32lbs, 49lbs)",
+    "description": "Elastic yoga bands,\r\nstretching for squats and\r\nfitness",
+    "price": "20.00",
+    "category": 2,
+    "image": "products/Screenshot_2026-01-13_at_10.52.28.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 6,
+  "fields": {
+    "name": "Adjustable tension wrist strength",
+    "description": "For hand workout, Distance\r\nadjustable stabilizer.",
+    "price": "30.00",
+    "category": 2,
+    "image": "products/Screenshot_2026-01-13_at_10.53.21.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 8,
+  "fields": {
+    "name": "11pcs Resistance Bands",
+    "description": "Muscle workout",
+    "price": "40.00",
+    "category": 2,
+    "image": "products/Screenshot_2026-01-13_at_10_LxuSMDz.54.16.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 9,
+  "fields": {
+    "name": "Sport stopwatch",
+    "description": "Digital Display, timer, Multi\r\ncolor, Ideal for training",
+    "price": "15.00",
+    "category": 2,
+    "image": "products/Screenshot_2026-01-13_at_10.59.14.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": false
+  }
+},
+{
+  "model": "store.product",
+  "pk": 10,
+  "fields": {
+    "name": "1 set Boxing Heavy Bag",
+    "description": "Punching Bag set with chain\r\n& Hook, 80CM high",
+    "price": "150.00",
+    "category": 3,
+    "image": "products/Screenshot_2026-01-13_at_11.16.31.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 11,
+  "fields": {
+    "name": "1 pc wall punching Bag",
+    "description": "Silent, High strength leather,\r\nNoise reducing Design\r\nsuitable for Gym & Home\r\nfitness",
+    "price": "200.00",
+    "category": 3,
+    "image": "products/Screenshot_2026-01-13_at_11.18.18.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 13,
+  "fields": {
+    "name": "Boxing Gloves",
+    "description": "For kickboxing, Muay thai,\r\nMMA Fighting",
+    "price": "80.00",
+    "category": 3,
+    "image": "products/Screenshot_2026-01-13_at_11_yFt86Ur.19.51.png",
+    "stock": 8,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 14,
+  "fields": {
+    "name": "1 pc Jump Rope",
+    "description": "Black & Red weighted steel\r\nwire jump rope 3m length",
+    "price": "20.00",
+    "category": 3,
+    "image": "products/Screenshot_2026-01-13_at_11.21.22.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 15,
+  "fields": {
+    "name": "Panted style Football",
+    "description": "Outdoor training football",
+    "price": "50.00",
+    "category": 4,
+    "image": "products/Screenshot_2026-01-13_at_12.48.43.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 16,
+  "fields": {
+    "name": "Size 7 Rose Basketball",
+    "description": "Rose series Rubber\r\nBasketball for indoor &\r\nOutdoor",
+    "price": "100.00",
+    "category": 4,
+    "image": "products/Screenshot_2026-01-13_at_12.49.42.png",
+    "stock": 10,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 17,
+  "fields": {
+    "name": "Tennis Racket bag",
+    "description": "High Quality, large capacity\r\nfor sport items, shoulder\r\nhandbag.",
+    "price": "250.00",
+    "category": 4,
+    "image": "products/Screenshot_2026-01-13_at_12.52.26.png",
+    "stock": 0,
+    "created_date": "2026-02-05T20:27:32.364Z",
+    "is_in_stock": true,
+    "is_new_arrival": true
+  }
+},
+{
+  "model": "store.order",
+  "pk": 1,
+  "fields": {
+    "first_name": "Muhammed",
+    "last_name": "Nk",
+    "email": "admin@example.com",
+    "phone": "8592094647",
+    "address": "Cusat",
+    "building": "654",
+    "street": "Cusat",
+    "zone": "876",
+    "city": "Doha",
+    "postal_code": "682022",
+    "payment_method": "fawran",
+    "created": "2026-02-05T20:32:39.189Z",
+    "updated": "2026-02-05T20:32:39.189Z",
+    "paid": false
+  }
+},
+{
+  "model": "store.order",
+  "pk": 2,
+  "fields": {
+    "first_name": "Muhammed",
+    "last_name": "Nk",
+    "email": "admin@example.com",
+    "phone": "8592094647",
+    "address": "Cusat",
+    "building": "654",
+    "street": "Cusat",
+    "zone": "876",
+    "city": "Doha",
+    "postal_code": "682022",
+    "payment_method": "cod",
+    "created": "2026-02-05T22:27:52.776Z",
+    "updated": "2026-02-05T22:27:52.776Z",
+    "paid": false
+  }
+},
+{
+  "model": "store.order",
+  "pk": 3,
+  "fields": {
+    "first_name": "Muhammed",
+    "last_name": "Nk",
+    "email": "admin@example.com",
+    "phone": "8592094647",
+    "address": "Cusat",
+    "building": "654",
+    "street": "Cusat",
+    "zone": "876",
+    "city": "Doha",
+    "postal_code": "682022",
+    "payment_method": "cod",
+    "created": "2026-02-06T11:33:56.670Z",
+    "updated": "2026-02-06T11:33:56.670Z",
+    "paid": false
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 4,
+    "price": "80.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": 1,
+    "price": "200.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 2,
+    "product": 3,
+    "price": "70.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 3,
+    "product": 13,
+    "price": "80.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "store.review",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "user": 3,
+    "guest_name": "",
+    "rating": 3,
+    "comment": "good",
+    "created_date": "2026-02-05T20:37:26.987Z",
+    "is_approved": false
+  }
+}
+]
