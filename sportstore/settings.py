@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,13 +22,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2)mxu#7ro@0kc!vw^2d2cu4kw-ana8t#tvhy)-v6i88u=w3k7%'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-2)mxu#7ro@0kc!vw^2d2cu4kw-ana8t#tvhy)-v6i88u=w3k7%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['hafisnk123.pythonanywhere.com', 'localhost','127.0.0.1']
-#nwe Hosts added
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'hafisnk123.pythonanywhere.com,localhost,127.0.0.1').split(',')
+# Add Render.com hostname dynamically
+if 'RENDER_SERVICE_URL' in os.environ or 'WEB_SERVICE' in os.environ:
+    from urllib.parse import urlparse
+    render_url = os.environ.get('RENDER_SERVICE_URL', os.environ.get('RENDER_EXTERNAL_URL', ''))
+    if render_url:
+        parsed = urlparse(render_url)
+        if parsed.hostname and parsed.hostname not in ALLOWED_HOSTS:
+            ALLOWED_HOSTS.append(parsed.hostname)
 
 # Application definition
 
@@ -75,12 +84,22 @@ WSGI_APPLICATION = 'sportstore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Use PostgreSQL on Render.com, fallback to SQLite for local development
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
