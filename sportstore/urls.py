@@ -32,5 +32,5 @@ if settings.DEBUG:
 if not settings.DEBUG:
     from django.views.static import serve
     urlpatterns += [
-        path('media/<path>', serve, {'document_root': settings.MEDIA_ROOT}),
+        path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
     ]
