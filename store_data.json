@@ -1,5 +1,59 @@
 [
 {
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$zCmRmgnOtqLzlRUpB6PxBs$3h38MTGE8POSzLkim8Po7qUdjrSM2Yoz/wp7YqnOTeU=",
+    "last_login": "2026-01-12T15:43:13.524Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmailmn.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-12T14:54:03.124Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$A1TW7U9krzQUYqIloeVlA7$6VDE+abqxl+rXgyR6/woTJvcIv/lLT3lvl29cFuuc1k=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "Sultan",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-12T15:44:45Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$YgiT0041X6ZuNdXEeMyYjw$fu/ET0YP8wJtfG6wdzNEycMaOxhFVh4OLBA0uTJ2ygg=",
+    "last_login": "2026-02-05T19:09:10.064Z",
+    "is_superuser": true,
+    "username": "sultan",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-12T17:10:23.746Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "store.category",
   "pk": 1,
   "fields": {
