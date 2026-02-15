@@ -28,7 +28,7 @@ MANIFEST
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-/media
+# /media - Commented out to allow product images on Render
 /staticfiles
 /static
 

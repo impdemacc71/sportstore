@@ -27,3 +27,10 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Serve media files in production (for Render.com)
+if not settings.DEBUG:
+    from django.views.static import serve
+    urlpatterns += [
+        path('media/<path>', serve, {'document_root': settings.MEDIA_ROOT}),
+    ]
