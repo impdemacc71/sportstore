@@ -32,9 +32,12 @@
 
     .form-control {
         border: 1px solid #000000;
-        padding: 10px 15px;
-        font-size: 13px;
+        border-radius: 0;
+        padding: 12px 15px;
+        font-size: 16px;
+        /* Prevents iOS zoom */
         transition: all 0.3s ease;
+        -webkit-appearance: none;
     }
 
     .form-control:focus {
@@ -47,14 +50,15 @@
         background-color: #000000;
         color: #ffffff;
         border: none;
-        padding: 12px 28px;
-        font-size: 11px;
+        padding: 14px 28px;
+        font-size: 12px;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         width: 100%;
         cursor: pointer;
         transition: all 0.3s ease;
+        min-height: 48px;
     }
 
     .btn-auth:hover {
@@ -88,12 +92,28 @@
 
     @media (max-width: 576px) {
         .auth-container {
-            margin: 30px 15px;
+            margin: 25px 15px;
             padding: 30px 20px;
         }
 
         .auth-title {
-            font-size: 24px;
+            font-size: 20px;
+        }
+
+        .alert {
+            font-size: 13px;
+            padding: 12px 15px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .auth-container {
+            margin: 20px 10px;
+            padding: 25px 15px;
+        }
+
+        .auth-title {
+            font-size: 18px;
         }
     }
 </style>
@@ -103,21 +123,21 @@
         <h1 class="auth-title">Sign In</h1>
 
         {% if form.errors %}
-            <div class="alert alert-danger">
-                Your username and password didn't match. Please try again.
-            </div>
+        <div class="alert alert-danger">
+            Your username and password didn't match. Please try again.
+        </div>
         {% endif %}
 
         {% if next %}
-            {% if user.is_authenticated %}
-                <div class="alert alert-warning">
-                    Your account doesn't have access to this page. To proceed, please login with an account that has access.
-                </div>
-            {% else %}
-                <div class="alert alert-info">
-                    Please login to see this page.
-                </div>
-            {% endif %}
+        {% if user.is_authenticated %}
+        <div class="alert alert-warning">
+            Your account doesn't have access to this page. To proceed, please login with an account that has access.
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            Please login to see this page.
+        </div>
+        {% endif %}
         {% endif %}
 
         <form method="post" action="{% url 'login' %}">

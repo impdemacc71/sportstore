@@ -13,6 +13,10 @@
         margin-bottom: 30px;
         font-size: 13px;
         letter-spacing: 0.5px;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 5px;
     }
 
     .breadcrumb a {
@@ -108,6 +112,8 @@
         line-height: 1.3;
         margin-bottom: 20px;
         color: #000;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .product-rating {
@@ -115,6 +121,7 @@
         align-items: center;
         gap: 10px;
         margin-bottom: 25px;
+        flex-wrap: wrap;
     }
 
     .rating-stars {
@@ -162,6 +169,7 @@
         height: 8px;
         border-radius: 50%;
         background: #000;
+        flex-shrink: 0;
     }
 
     .stock-status.out-of-stock .stock-dot {
@@ -175,6 +183,8 @@
         margin-bottom: 35px;
         padding-bottom: 35px;
         border-bottom: 1px solid #eee;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     /* Add to Cart Section */
@@ -196,6 +206,7 @@
         gap: 15px;
         align-items: center;
         margin-bottom: 20px;
+        flex-wrap: wrap;
     }
 
     .quantity-controls {
@@ -204,6 +215,7 @@
         border: 1px solid #000;
         border-radius: 0;
         overflow: hidden;
+        flex-shrink: 0;
     }
 
     .qty-btn {
@@ -215,6 +227,11 @@
         cursor: pointer;
         transition: all 0.3s ease;
         color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
     }
 
     .qty-btn:hover {
@@ -223,7 +240,7 @@
     }
 
     .qty-input {
-        width: 70px;
+        width: 60px;
         height: 50px;
         text-align: center;
         border: none;
@@ -252,6 +269,9 @@
         letter-spacing: 1.5px;
         cursor: pointer;
         transition: all 0.3s ease;
+        flex: 1;
+        min-width: 180px;
+        min-height: 44px;
     }
 
     .btn-add-to-cart:hover {
@@ -329,23 +349,39 @@
 
     .rating-options {
         display: flex;
-        gap: 20px;
+        gap: 15px;
         margin-bottom: 10px;
+        flex-wrap: wrap;
     }
 
     .rating-option {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         cursor: pointer;
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        transition: all 0.2s ease;
+        min-height: 44px;
+    }
+
+    .rating-option:hover {
+        border-color: #000;
+        background: #f5f5f5;
     }
 
     .rating-option input[type="radio"] {
         display: none;
     }
 
-    .rating-option input[type="radio"]:checked + span {
+    .rating-option input[type="radio"]:checked+span {
         font-weight: 600;
+    }
+
+    .rating-option:has(input[type="radio"]:checked) {
+        border-color: #000;
+        background: #000;
+        color: #fff;
     }
 
     .form-control {
@@ -379,6 +415,7 @@
         letter-spacing: 1.5px;
         cursor: pointer;
         transition: all 0.3s ease;
+        min-height: 44px;
     }
 
     .btn-submit-review:hover {
@@ -402,6 +439,8 @@
         justify-content: space-between;
         align-items: start;
         margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .reviewer-name {
@@ -425,6 +464,8 @@
         font-size: 14px;
         line-height: 1.7;
         color: #555;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .no-reviews {
@@ -434,29 +475,57 @@
         font-size: 15px;
     }
 
+    /* ===== RESPONSIVE ===== */
+
     @media (max-width: 992px) {
         .product-detail-grid {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 35px;
+        }
+
+        .product-detail-container {
+            padding: 40px 20px;
         }
 
         .product-title {
             font-size: 28px;
         }
 
+        .product-price {
+            font-size: 28px;
+        }
+
         .quantity-selector {
-            flex-direction: column;
-            align-items: stretch;
+            flex-wrap: wrap;
         }
 
         .btn-add-to-cart {
             width: 100%;
+            flex: unset;
+        }
+
+        .product-detail-grid {
+            margin-bottom: 50px;
+        }
+
+        .reviews-section {
+            padding-top: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 30px;
         }
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 768px) {
         .product-detail-container {
-            padding: 30px 15px;
+            padding: 25px 15px;
+        }
+
+        .product-detail-grid {
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .breadcrumb {
@@ -464,12 +533,22 @@
             margin-bottom: 20px;
         }
 
+        .breadcrumb span {
+            margin: 0 6px;
+        }
+
         .product-title {
-            font-size: 22px;
+            font-size: 24px;
         }
 
         .product-price {
             font-size: 24px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
         }
 
         .meta-info {
@@ -477,40 +556,121 @@
             gap: 10px;
         }
 
-        .btn-add-to-cart {
-            padding: 14px 20px;
-            font-size: 12px;
+        .review-form-card {
+            padding: 25px 20px;
+            margin-bottom: 35px;
         }
 
-        .review-section {
-            padding: 30px 15px;
+        .review-form-card h3 {
+            font-size: 16px;
         }
 
-        .review-form-section {
-            padding: 30px 15px;
+        .rating-options {
+            gap: 10px;
+        }
+
+        .rating-option {
+            padding: 8px 12px;
+        }
+
+        .review-card {
+            padding: 20px 16px;
+        }
+
+        .reviews-list {
+            gap: 20px;
+        }
+
+        .btn-submit-review {
+            width: 100%;
+            text-align: center;
+        }
+
+        .no-reviews {
+            padding: 40px 15px;
+            font-size: 14px;
+        }
+
+        .product-badge {
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            font-size: 10px;
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 480px) {
+        .product-detail-container {
+            padding: 20px 12px;
+        }
+
         .product-title {
             font-size: 20px;
+        }
+
+        .product-category {
+            font-size: 10px;
         }
 
         .product-price {
             font-size: 22px;
         }
 
+        .stock-status {
+            font-size: 12px;
+        }
+
+        .quantity-controls {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .qty-btn {
+            width: 48px;
+            height: 48px;
+        }
+
+        .qty-input {
+            flex: 1;
+            min-width: 50px;
+            height: 48px;
+        }
+
         .btn-add-to-cart {
-            padding: 12px 15px;
+            padding: 14px 20px;
             font-size: 11px;
+            min-width: unset;
+            width: 100%;
         }
 
-        .quantity-selector {
-            width: 120px;
+        .review-form-card {
+            padding: 20px 15px;
         }
 
-        .quantity-input {
-            width: 50px;
+        .rating-option {
+            padding: 6px 8px;
+            font-size: 13px;
+        }
+
+        .review-card {
+            padding: 16px 12px;
+        }
+
+        .reviewer-name {
+            font-size: 14px;
+        }
+
+        .review-text {
+            font-size: 13px;
+        }
+
+        .reviews-section {
+            padding-top: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 25px;
         }
     }
 </style>
@@ -530,17 +690,17 @@
         <div class="product-image-section">
             <div class="product-image-wrapper">
                 {% if product.is_in_stock %}
-                    {% if product.is_new_arrival %}
-                        <span class="product-badge badge-new">New In</span>
-                    {% endif %}
+                {% if product.is_new_arrival %}
+                <span class="product-badge badge-new">New In</span>
+                {% endif %}
                 {% else %}
-                    <span class="product-badge badge-sold-out">Sold Out</span>
+                <span class="product-badge badge-sold-out">Sold Out</span>
                 {% endif %}
 
                 {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                    <img src="https://via.placeholder.com/600x600?text=No+Image" alt="{{ product.name }}">
+                <img src="https://via.placeholder.com/600x600?text=No+Image" alt="{{ product.name }}">
                 {% endif %}
             </div>
         </div>
@@ -551,16 +711,17 @@
             <h1 class="product-title">{{ product.name }}</h1>
 
             {% if product.review_count > 0 %}
-                <div class="product-rating">
-                    <div class="rating-stars">
-                        {% with full_stars=product.average_rating|floatformat:0 %}
-                            {% for i in "12345" %}
-                                {% if forloop.counter <= full_stars %}★{% else %}<span class="empty">★</span>{% endif %}
-                            {% endfor %}
+            <div class="product-rating">
+                <div class="rating-stars">
+                    {% with full_stars=product.average_rating|floatformat:0 %}
+                    {% for i in "12345" %}
+                    {% if forloop.counter <= full_stars %}★{% else %}<span class="empty">★</span>{% endif %}
+                        {% endfor %}
                         {% endwith %}
-                    </div>
-                    <span class="review-count">({{ product.review_count }} review{{ product.review_count|pluralize }})</span>
                 </div>
+                <span class="review-count">({{ product.review_count }} review{{ product.review_count|pluralize
+                    }})</span>
+            </div>
             {% endif %}
 
             <div class="product-price">{{ product.price }} QAR</div>
@@ -568,9 +729,9 @@
             <div class="stock-status {% if product.is_in_stock %}in-stock{% else %}out-of-stock{% endif %}">
                 <span class="stock-dot"></span>
                 {% if product.is_in_stock %}
-                    In Stock ({{ product.stock }} available)
+                In Stock ({{ product.stock }} available)
                 {% else %}
-                    Out of Stock
+                Out of Stock
                 {% endif %}
             </div>
 
@@ -580,31 +741,26 @@
 
             <!-- Add to Cart Form -->
             {% if product.is_in_stock %}
-                <form action="{% url 'cart_add' product.id %}" method="post" class="add-to-cart-section">
-                    {% csrf_token %}
-                    <div class="quantity-label">Quantity</div>
-                    <div class="quantity-selector">
-                        <div class="quantity-controls">
-                            <button type="button" class="qty-btn qty-minus">−</button>
-                            <input type="number"
-                                   name="quantity"
-                                   class="qty-input"
-                                   value="1"
-                                   min="1"
-                                   max="{{ product.stock }}"
-                                   id="qty-input">
-                            <button type="button" class="qty-btn qty-plus">+</button>
-                        </div>
-                        <input type="hidden" name="override" value="0">
-                        <button type="submit" class="btn-add-to-cart">
-                            Add to Cart
-                        </button>
+            <form action="{% url 'cart_add' product.id %}" method="post" class="add-to-cart-section">
+                {% csrf_token %}
+                <div class="quantity-label">Quantity</div>
+                <div class="quantity-selector">
+                    <div class="quantity-controls">
+                        <button type="button" class="qty-btn qty-minus">−</button>
+                        <input type="number" name="quantity" class="qty-input" value="1" min="1"
+                            max="{{ product.stock }}" id="qty-input">
+                        <button type="button" class="qty-btn qty-plus">+</button>
                     </div>
-                </form>
+                    <input type="hidden" name="override" value="0">
+                    <button type="submit" class="btn-add-to-cart">
+                        Add to Cart
+                    </button>
+                </div>
+            </form>
             {% else %}
-                <button class="btn-add-to-cart" disabled style="width: 100%; max-width: 350px;">
-                    Out of Stock
-                </button>
+            <button class="btn-add-to-cart" disabled style="width: 100%;">
+                Out of Stock
+            </button>
             {% endif %}
 
             <div class="meta-info">
@@ -630,19 +786,19 @@
             <form action="{% url 'add_review' product.id %}" method="post">
                 {% csrf_token %}
                 {% if not user.is_authenticated %}
-                    <div class="form-group">
-                        <label>{{ review_form.guest_name.label }} *</label>
-                        {{ review_form.guest_name }}
-                    </div>
+                <div class="form-group">
+                    <label>{{ review_form.guest_name.label }} *</label>
+                    {{ review_form.guest_name }}
+                </div>
                 {% endif %}
                 <div class="form-group">
                     <label>{{ review_form.rating.label }}</label>
                     <div class="rating-options">
                         {% for value, label in review_form.rating.field.choices %}
-                            <label class="rating-option">
-                                <input type="radio" name="rating" value="{{ value }}" required>
-                                <span>{{ label }}</span>
-                            </label>
+                        <label class="rating-option">
+                            <input type="radio" name="rating" value="{{ value }}" required>
+                            <span>{{ label }}</span>
+                        </label>
                         {% endfor %}
                     </div>
                 </div>
@@ -656,26 +812,26 @@
 
         <!-- Reviews List -->
         {% if reviews %}
-            <div class="reviews-list">
-                {% for review in reviews %}
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-name">{{ review.guest_name|default:review.user.username }}</div>
-                            <div class="review-date">{{ review.created_date|date:"F d, Y" }}</div>
-                        </div>
-                        <div class="review-rating">
-                            {% for i in "12345" %}
-                                {% if forloop.counter <= review.rating %}★{% else %}<span class="empty">★</span>{% endif %}
-                            {% endfor %}
-                        </div>
-                        <div class="review-text">{{ review.comment }}</div>
-                    </div>
-                {% endfor %}
+        <div class="reviews-list">
+            {% for review in reviews %}
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">{{ review.guest_name|default:review.user.username }}</div>
+                    <div class="review-date">{{ review.created_date|date:"F d, Y" }}</div>
+                </div>
+                <div class="review-rating">
+                    {% for i in "12345" %}
+                    {% if forloop.counter <= review.rating %}★{% else %}<span class="empty">★</span>{% endif %}
+                        {% endfor %}
+                </div>
+                <div class="review-text">{{ review.comment }}</div>
             </div>
+            {% endfor %}
+        </div>
         {% else %}
-            <div class="no-reviews">
-                No reviews yet. Be the first to review this product!
-            </div>
+        <div class="no-reviews">
+            No reviews yet. Be the first to review this product!
+        </div>
         {% endif %}
     </div>
 </div>
@@ -687,28 +843,34 @@
     const qtyPlus = document.querySelector('.qty-plus');
     const maxQty = {{ product.stock }};
 
-    qtyMinus.addEventListener('click', function() {
-        const currentValue = parseInt(qtyInput.value);
-        if (currentValue > 1) {
-            qtyInput.value = currentValue - 1;
-        }
-    });
+    if (qtyMinus) {
+        qtyMinus.addEventListener('click', function () {
+            const currentValue = parseInt(qtyInput.value);
+            if (currentValue > 1) {
+                qtyInput.value = currentValue - 1;
+            }
+        });
+    }
 
-    qtyPlus.addEventListener('click', function() {
-        const currentValue = parseInt(qtyInput.value);
-        if (currentValue < maxQty) {
-            qtyInput.value = currentValue + 1;
-        }
-    });
+    if (qtyPlus) {
+        qtyPlus.addEventListener('click', function () {
+            const currentValue = parseInt(qtyInput.value);
+            if (currentValue < maxQty) {
+                qtyInput.value = currentValue + 1;
+            }
+        });
+    }
 
-    qtyInput.addEventListener('change', function() {
-        let value = parseInt(this.value);
-        if (isNaN(value) || value < 1) {
-            value = 1;
-        } else if (value > maxQty) {
-            value = maxQty;
-        }
-        this.value = value;
-    });
+    if (qtyInput) {
+        qtyInput.addEventListener('change', function () {
+            let value = parseInt(this.value);
+            if (isNaN(value) || value < 1) {
+                value = 1;
+            } else if (value > maxQty) {
+                value = maxQty;
+            }
+            this.value = value;
+        });
+    }
 </script>
 {% endblock %}

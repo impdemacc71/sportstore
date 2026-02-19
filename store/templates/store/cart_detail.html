@@ -17,6 +17,7 @@
         color: #000000;
     }
 
+    /* Desktop: Table layout */
     .cart-table {
         width: 100%;
         border-collapse: collapse;
@@ -93,6 +94,11 @@
         cursor: pointer;
         transition: background-color 0.2s ease;
         color: #000000;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .qty-btn:hover {
@@ -135,6 +141,8 @@
         display: flex;
         align-items: center;
         gap: 5px;
+        min-width: 44px;
+        min-height: 44px;
     }
 
     .btn-remove:hover {
@@ -179,6 +187,9 @@
         text-decoration: none;
         transition: all 0.3s ease;
         display: inline-block;
+        text-align: center;
+        min-height: 44px;
+        line-height: 20px;
     }
 
     .btn-continue-shopping:hover {
@@ -199,6 +210,9 @@
         text-decoration: none;
         transition: all 0.3s ease;
         display: inline-block;
+        text-align: center;
+        min-height: 44px;
+        line-height: 20px;
     }
 
     .btn-checkout:hover {
@@ -228,208 +242,384 @@
         margin-bottom: 30px;
     }
 
+    /* Mobile Card Layout */
+    .cart-mobile {
+        display: none;
+    }
+
+    .cart-mobile-card {
+        display: flex;
+        gap: 15px;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e5e5;
+        align-items: flex-start;
+    }
+
+    .cart-mobile-card:first-child {
+        padding-top: 0;
+    }
+
+    .cart-mobile-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border: 1px solid #e5e5e5;
+        flex-shrink: 0;
+    }
+
+    .cart-mobile-details {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .cart-mobile-name {
+        font-weight: 500;
+        font-size: 14px;
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 6px;
+        line-height: 1.4;
+    }
+
+    .cart-mobile-name:hover {
+        opacity: 0.7;
+    }
+
+    .cart-mobile-price {
+        font-weight: 600;
+        font-size: 16px;
+        color: #000000;
+        margin-bottom: 12px;
+    }
+
+    .cart-mobile-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .cart-mobile-subtotal {
+        font-size: 12px;
+        color: #666;
+        margin-top: 8px;
+    }
+
+    .cart-mobile-subtotal strong {
+        color: #000;
+    }
+
+    .cart-mobile-total {
+        background: #000;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .cart-mobile-total-label {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .cart-mobile-total-value {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    /* ===== RESPONSIVE ===== */
+
     @media (max-width: 768px) {
         .cart-page {
-            padding: 30px 0;
+            padding: 25px 0;
         }
 
         .page-title {
-            font-size: 20px;
-            margin-bottom: 25px;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
 
-        .cart-table th:nth-child(2),
-        .cart-table th:nth-child(3),
-        .cart-table td:nth-child(2),
-        .cart-table td:nth-child(3) {
+        /* Hide table, show mobile cards */
+        .cart-table {
             display: none;
         }
 
-        .cart-product-image {
-            width: 60px;
-            height: 60px;
-        }
-
-        .cart-product-name {
-            font-size: 13px;
-        }
-
-        .cart-product-info {
-            gap: 10px;
+        .cart-mobile {
+            display: block;
         }
 
         .cart-actions {
             flex-direction: column;
             align-items: stretch;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn-continue-shopping,
         .btn-checkout {
             width: 100%;
             text-align: center;
+            padding: 14px 20px;
+            font-size: 12px;
         }
 
         .empty-cart {
             padding: 50px 15px;
         }
+
+        .empty-cart h3 {
+            font-size: 18px;
+        }
     }
 
     @media (max-width: 480px) {
         .page-title {
-            font-size: 18px;
+            font-size: 16px;
+            letter-spacing: 1px;
         }
 
-        .cart-table th,
-        .cart-table td {
-            padding: 15px 10px;
+        .cart-mobile-card {
+            gap: 12px;
+            padding: 15px 0;
+        }
+
+        .cart-mobile-image {
+            width: 80px;
+            height: 80px;
+        }
+
+        .cart-mobile-name {
+            font-size: 13px;
+        }
+
+        .cart-mobile-price {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .quantity-controls {
+            border-radius: 4px;
+        }
+
+        .qty-btn {
+            padding: 6px 10px;
+            min-width: 38px;
+            min-height: 38px;
+        }
+
+        .qty-input {
+            width: 40px;
+            font-size: 13px;
+        }
+
+        .btn-remove {
+            font-size: 10px;
+        }
+
+        .cart-mobile-total {
+            padding: 16px;
+        }
+
+        .cart-mobile-total-label {
             font-size: 12px;
         }
 
-        .cart-product-image {
-            width: 50px;
-            height: 50px;
-        }
-
-        .cart-total-row td {
-            font-size: 14px !important;
-            padding: 15px 10px !important;
+        .cart-mobile-total-value {
+            font-size: 18px;
         }
     }
 </style>
 
-    <div class="container cart-page">
-        <h1 class="page-title">Shopping Cart</h1>
+<div class="container cart-page">
+    <h1 class="page-title">Shopping Cart</h1>
 
-        {% if cart %}
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in cart %}
-                    {% with product=item.product %}
-                        <tr data-product-id="{{ product.id }}">
-                            <td>
-                                <div class="cart-product-info">
-                                    {% if product.image %}
-                                        <img src="{{ product.image.url }}" class="cart-product-image" alt="{{ product.name }}">
-                                    {% endif %}
-                                    <div>
-                                        <a href="{% url 'product_detail' product.id %}" class="cart-product-name">
-                                            {{ product.name }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><span class="cart-price">{{ item.price }} QAR</span></td>
-                            <td>
-                                <form action="{% url 'cart_add' product.id %}" method="post" class="cart-qty-form" style="margin: 0;">
-                                    <div class="quantity-controls">
-                                        <button type="button" class="qty-btn qty-minus" data-form-id="form-{{ forloop.counter }}">−</button>
-                                        <input type="number"
-                                               name="quantity"
-                                               class="qty-input"
-                                               value="{{ item.quantity }}"
-                                               min="1"
-                                               id="form-{{ forloop.counter }}"
-                                               data-product-id="{{ product.id }}"
-                                               data-original-url="{% url 'cart_add' product.id %}">
-                                        <input type="hidden" name="override" value="1">
-                                        <button type="button" class="qty-btn qty-plus" data-form-id="form-{{ forloop.counter }}">+</button>
-                                    </div>
-                                    {% csrf_token %}
-                                </form>
-                            </td>
-                            <td><span class="cart-price">{{ item.total_price }} QAR</span></td>
-                            <td>
-                                <form action="{% url 'cart_remove' product.id %}" method="post" style="margin: 0;">
-                                    <button type="submit" class="btn-remove">
-                                        <i class="bi bi-trash"></i> Remove
-                                    </button>
-                                    {% csrf_token %}
-                                </form>
-                            </td>
-                        </tr>
-                    {% endwith %}
-                {% endfor %}
-                <tr class="cart-total-row">
-                    <td colspan="3" style="text-align: right;">Total:</td>
-                    <td colspan="2" style="text-align: left;">{{ cart.get_total_price }} QAR</td>
-                </tr>
-            </tbody>
-        </table>
+    {% if cart %}
 
-        <div class="cart-actions">
-            <a href="{% url 'product_list' %}" class="btn-continue-shopping">
-                Continue Shopping
-            </a>
-            <a href="{% url 'checkout' %}" class="btn-checkout">
-                Proceed to Checkout
-            </a>
+    <!-- Desktop Table (hidden on mobile) -->
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            {% with product=item.product %}
+            <tr data-product-id="{{ product.id }}">
+                <td>
+                    <div class="cart-product-info">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="cart-product-image" alt="{{ product.name }}">
+                        {% endif %}
+                        <div>
+                            <a href="{% url 'product_detail' product.id %}" class="cart-product-name">
+                                {{ product.name }}
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td><span class="cart-price">{{ item.price }} QAR</span></td>
+                <td>
+                    <form action="{% url 'cart_add' product.id %}" method="post" class="cart-qty-form"
+                        style="margin: 0;">
+                        <div class="quantity-controls">
+                            <button type="button" class="qty-btn qty-minus"
+                                data-form-id="form-{{ forloop.counter }}">−</button>
+                            <input type="number" name="quantity" class="qty-input" value="{{ item.quantity }}" min="1"
+                                id="form-{{ forloop.counter }}" data-product-id="{{ product.id }}"
+                                data-original-url="{% url 'cart_add' product.id %}">
+                            <input type="hidden" name="override" value="1">
+                            <button type="button" class="qty-btn qty-plus"
+                                data-form-id="form-{{ forloop.counter }}">+</button>
+                        </div>
+                        {% csrf_token %}
+                    </form>
+                </td>
+                <td><span class="cart-price">{{ item.total_price }} QAR</span></td>
+                <td>
+                    <form action="{% url 'cart_remove' product.id %}" method="post" style="margin: 0;">
+                        <button type="submit" class="btn-remove">
+                            <i class="bi bi-trash"></i> Remove
+                        </button>
+                        {% csrf_token %}
+                    </form>
+                </td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+            <tr class="cart-total-row">
+                <td colspan="3" style="text-align: right;">Total:</td>
+                <td colspan="2" style="text-align: left;">{{ cart.get_total_price }} QAR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Mobile Cards (hidden on desktop) -->
+    <div class="cart-mobile">
+        {% for item in cart %}
+        {% with product=item.product %}
+        <div class="cart-mobile-card">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="cart-mobile-image" alt="{{ product.name }}">
+            {% endif %}
+            <div class="cart-mobile-details">
+                <a href="{% url 'product_detail' product.id %}" class="cart-mobile-name">
+                    {{ product.name }}
+                </a>
+                <div class="cart-mobile-price">{{ item.price }} QAR</div>
+
+                <div class="cart-mobile-actions">
+                    <form action="{% url 'cart_add' product.id %}" method="post" class="cart-qty-form"
+                        style="margin: 0;">
+                        <div class="quantity-controls">
+                            <button type="button" class="qty-btn qty-minus"
+                                data-form-id="m-form-{{ forloop.counter }}">−</button>
+                            <input type="number" name="quantity" class="qty-input" value="{{ item.quantity }}" min="1"
+                                id="m-form-{{ forloop.counter }}" data-product-id="{{ product.id }}"
+                                data-original-url="{% url 'cart_add' product.id %}">
+                            <input type="hidden" name="override" value="1">
+                            <button type="button" class="qty-btn qty-plus"
+                                data-form-id="m-form-{{ forloop.counter }}">+</button>
+                        </div>
+                        {% csrf_token %}
+                    </form>
+
+                    <form action="{% url 'cart_remove' product.id %}" method="post" style="margin: 0;">
+                        <button type="submit" class="btn-remove">
+                            <i class="bi bi-trash"></i> Remove
+                        </button>
+                        {% csrf_token %}
+                    </form>
+                </div>
+
+                <div class="cart-mobile-subtotal">
+                    Subtotal: <strong>{{ item.total_price }} QAR</strong>
+                </div>
+            </div>
         </div>
-        {% else %}
-        <div class="empty-cart">
-            <h3>Your cart is empty</h3>
-            <p>Looks like you haven't added any items to your cart yet.</p>
-            <a href="{% url 'product_list' %}" class="btn-continue-shopping">
-                Start Shopping
-            </a>
+        {% endwith %}
+        {% endfor %}
+
+        <div class="cart-mobile-total">
+            <span class="cart-mobile-total-label">Total</span>
+            <span class="cart-mobile-total-value">{{ cart.get_total_price }} QAR</span>
         </div>
-        {% endif %}
     </div>
 
-    <script>
-        // Auto-update cart quantity with debounce
-        let updateTimeout;
-        const updateCart = (form) => {
-            clearTimeout(updateTimeout);
-            updateTimeout = setTimeout(() => {
-                form.submit();
-            }, 500);
-        };
+    <div class="cart-actions">
+        <a href="{% url 'product_list' %}" class="btn-continue-shopping">
+            Continue Shopping
+        </a>
+        <a href="{% url 'checkout' %}" class="btn-checkout">
+            Proceed to Checkout
+        </a>
+    </div>
+    {% else %}
+    <div class="empty-cart">
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added any items to your cart yet.</p>
+        <a href="{% url 'product_list' %}" class="btn-continue-shopping">
+            Start Shopping
+        </a>
+    </div>
+    {% endif %}
+</div>
 
-        // Handle +/- buttons
-        document.querySelectorAll('.qty-minus').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const formId = this.dataset.formId;
-                const input = document.getElementById(formId);
-                const currentValue = parseInt(input.value);
+<script>
+    // Auto-update cart quantity with debounce
+    let updateTimeout;
+    const updateCart = (form) => {
+        clearTimeout(updateTimeout);
+        updateTimeout = setTimeout(() => {
+            form.submit();
+        }, 500);
+    };
 
-                if (currentValue > 1) {
-                    input.value = currentValue - 1;
-                    updateCart(input.closest('form'));
-                }
-            });
-        });
+    // Handle +/- buttons
+    document.querySelectorAll('.qty-minus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const formId = this.dataset.formId;
+            const input = document.getElementById(formId);
+            const currentValue = parseInt(input.value);
 
-        document.querySelectorAll('.qty-plus').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const formId = this.dataset.formId;
-                const input = document.getElementById(formId);
-                const currentValue = parseInt(input.value);
-                input.value = currentValue + 1;
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
                 updateCart(input.closest('form'));
-            });
+            }
         });
+    });
 
-        // Handle manual input changes
-        document.querySelectorAll('.qty-input').forEach(input => {
-            input.addEventListener('change', function() {
-                const value = parseInt(this.value);
-
-                if (value < 1 || isNaN(value)) {
-                    this.value = 1;
-                }
-
-                updateCart(this.closest('form'));
-            });
+    document.querySelectorAll('.qty-plus').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const formId = this.dataset.formId;
+            const input = document.getElementById(formId);
+            const currentValue = parseInt(input.value);
+            input.value = currentValue + 1;
+            updateCart(input.closest('form'));
         });
-    </script>
+    });
+
+    // Handle manual input changes
+    document.querySelectorAll('.qty-input').forEach(input => {
+        input.addEventListener('change', function () {
+            const value = parseInt(this.value);
+
+            if (value < 1 || isNaN(value)) {
+                this.value = 1;
+            }
+
+            updateCart(this.closest('form'));
+        });
+    });
+</script>
 {% endblock %}

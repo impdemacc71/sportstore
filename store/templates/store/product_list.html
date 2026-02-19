@@ -45,10 +45,11 @@
         z-index: 2;
         padding: 0 20px;
         max-width: 800px;
+        width: 100%;
     }
 
     .btn-hero {
-        background-color: transparent;
+        background-color: #000000;
         color: #ffffff;
         border: 2px solid #ffffff;
         padding: 14px 40px;
@@ -60,7 +61,8 @@
         transition: all 0.3s ease;
         text-decoration: none;
         display: inline-block;
-        background-color: #000000;
+        min-width: 44px;
+        min-height: 44px;
     }
 
     .btn-hero:hover {
@@ -119,20 +121,23 @@
         scroll-behavior: smooth;
         padding-bottom: 10px;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Hide scrollbar Firefox */
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
     }
 
     .new-arrivals-scroll::-webkit-scrollbar {
-        display: none; /* Hide scrollbar Chrome/Safari */
+        display: none;
     }
 
-    .new-arrival-card {
+    .new-arrival-card,
+    .new-arrivals-scroll .product-card {
         flex: 0 0 calc((100% - 75px) / 4);
         background: #ffffff;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         overflow: hidden;
         position: relative;
+        scroll-snap-align: start;
     }
 
     .new-arrival-card::before {
@@ -183,7 +188,7 @@
     }
 
     .new-arrival-info {
-        padding: 24px 20px;
+        padding: 20px 16px;
         text-align: left;
     }
 
@@ -199,12 +204,12 @@
     }
 
     .new-arrival-name {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 600;
         color: #000000;
         text-decoration: none;
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         line-height: 1.4;
         transition: opacity 0.3s ease;
     }
@@ -214,68 +219,14 @@
     }
 
     .new-arrival-price {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
         color: #000000;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         letter-spacing: -0.5px;
     }
 
-    .new-arrival-info .btn-view-product {
-        background-color: #000000;
-        color: #ffffff;
-        padding: 14px 24px;
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        border: none;
-        width: 100%;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration: none;
-        display: block;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .new-arrival-info .btn-view-product::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-
-    .new-arrival-info .btn-view-product:hover::before {
-        width: 300px;
-        height: 300px;
-    }
-
-    .new-arrival-info .btn-view-product:hover {
-        background-color: #ffffff;
-        color: #000000;
-        border: 2px solid #000000;
-        text-decoration: none;
-        transform: translateY(-2px);
-    }
-
-    .new-arrival-info .btn-view-product span {
-        position: relative;
-        z-index: 1;
-    }
-
-    /* Product cards in New Arrivals section */
-    .new-arrivals-scroll .product-card {
-        flex: 0 0 calc((100% - 75px) / 4);
-    }
-
-    /* Add to Bag button for New Arrival cards */
+    .new-arrival-info .btn-view-product,
     .product-card-new-arrival .btn-add-to-bag {
         background-color: #000000;
         color: #ffffff;
@@ -291,13 +242,16 @@
         text-decoration: none;
         display: block;
         text-align: center;
-        margin-top: 12px;
+        position: relative;
+        overflow: hidden;
     }
 
+    .new-arrival-info .btn-view-product:hover,
     .product-card-new-arrival .btn-add-to-bag:hover {
         background-color: #ffffff;
         color: #000000;
         border: 2px solid #000000;
+        text-decoration: none;
         transform: translateY(-2px);
     }
 
@@ -513,7 +467,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
         padding: 60px 20px 20px;
         transform: translateY(100%);
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -525,7 +479,7 @@
     }
 
     .product-info {
-        padding: 24px 20px;
+        padding: 20px 16px;
         text-align: left;
     }
 
@@ -540,15 +494,15 @@
     }
 
     .product-name {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 600;
         color: #000000;
         text-decoration: none;
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         line-height: 1.4;
         transition: opacity 0.3s ease;
-        min-height: 42px;
+        min-height: 40px;
         letter-spacing: -0.3px;
     }
 
@@ -557,17 +511,17 @@
     }
 
     .product-price {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
         color: #000000;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         letter-spacing: -0.5px;
     }
 
     .btn-view-product {
         background-color: #000000;
         color: #ffffff;
-        padding: 14px 24px;
+        padding: 12px 20px;
         font-size: 10px;
         font-weight: 700;
         text-transform: uppercase;
@@ -580,6 +534,7 @@
         display: block;
         position: relative;
         overflow: hidden;
+        text-align: center;
     }
 
     .btn-view-product::before {
@@ -590,7 +545,7 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255,255,255,0.2);
+        background: rgba(255, 255, 255, 0.2);
         transform: translate(-50%, -50%);
         transition: width 0.6s, height 0.6s;
     }
@@ -635,19 +590,20 @@
         line-height: 1.6;
     }
 
-    /* Responsive */
+    /* ===== RESPONSIVE ===== */
+
     @media (max-width: 992px) {
         .product-grid {
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 20px;
         }
 
         .hero-section {
-            min-height: 400px;
+            min-height: 380px;
         }
 
         .hero-content {
-            bottom: 20%;
+            bottom: 15%;
         }
 
         .btn-hero {
@@ -655,6 +611,7 @@
             font-size: 11px;
         }
 
+        .new-arrival-card,
         .new-arrivals-scroll .product-card {
             flex: 0 0 calc((100% - 50px) / 3);
         }
@@ -677,47 +634,12 @@
     @media (max-width: 768px) {
         .product-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .hero-section {
-            min-height: 350px;
-        }
-
-        .hero-content {
-            bottom: 15%;
-        }
-
-        .btn-hero {
-            padding: 12px 35px;
-            font-size: 11px;
-        }
-
-        .section-title {
-            font-size: 26px;
-        }
-
-        .product-image-wrapper {
-            padding-top: 100%;
-        }
-
-        .new-arrivals-scroll .product-card {
-            flex: 0 0 calc((100% - 20px) / 2);
-        }
-
-        .nav-arrow {
-            display: none;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .product-grid {
-            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
         .hero-section {
-            min-height: 300px;
+            min-height: 280px;
+            margin-bottom: 30px;
         }
 
         .hero-content {
@@ -726,151 +648,241 @@
 
         .btn-hero {
             padding: 12px 30px;
-            font-size: 10px;
-        }
-
-        .section-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
+            font-size: 11px;
         }
 
         .section-title {
-            font-size: 22px;
+            font-size: 24px;
         }
 
-        .product-image-wrapper {
-            padding-top: 100%;
+        .section-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        /* Touch devices: show quick actions always via button below */
+        .quick-actions {
+            display: none;
+        }
+
+        .new-arrival-card,
+        .new-arrivals-scroll .product-card {
+            flex: 0 0 calc((100% - 15px) / 2);
+        }
+
+        .nav-arrow {
+            display: none;
+        }
+
+        .product-info {
+            padding: 16px 12px;
         }
 
         .product-name {
             font-size: 13px;
+            min-height: 36px;
         }
 
         .product-price {
-            font-size: 16px;
+            font-size: 15px;
+            margin-bottom: 12px;
         }
 
         .btn-view-product {
-            padding: 10px 15px;
+            padding: 11px 15px;
             font-size: 9px;
         }
 
-        .new-arrivals-scroll .product-card {
-            flex: 0 0 calc((100% - 15px) / 2);
+        .new-arrival-info {
+            padding: 16px 12px;
+        }
+
+        .new-arrival-name {
+            font-size: 13px;
+        }
+
+        .new-arrival-price {
+            font-size: 15px;
         }
 
         .new-arrivals-scroll {
             gap: 15px;
         }
+
+        .search-results {
+            padding: 15px 18px;
+            margin-bottom: 25px;
+        }
+
+        .search-results h5 {
+            font-size: 11px;
+        }
+
+        .empty-state {
+            padding: 60px 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+        }
+
+        .empty-state p {
+            font-size: 14px;
+        }
+
+        .product-card.sold-out .product-image-wrapper::after {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-section {
+            min-height: 220px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content {
+            bottom: 10%;
+        }
+
+        .btn-hero {
+            padding: 10px 24px;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 20px;
+        }
+
+        .product-grid {
+            gap: 10px;
+        }
+
+        .product-info {
+            padding: 12px 10px;
+        }
+
+        .product-brand {
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .product-name {
+            font-size: 12px;
+            min-height: 34px;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .btn-view-product {
+            padding: 10px 12px;
+            font-size: 8px;
+            letter-spacing: 1px;
+        }
+
+        .new-arrival-card,
+        .new-arrivals-scroll .product-card {
+            flex: 0 0 calc((100% - 10px) / 2);
+        }
+
+        .new-arrivals-scroll {
+            gap: 10px;
+        }
+
+        .new-arrival-info {
+            padding: 12px 10px;
+        }
+
+        .new-arrival-name {
+            font-size: 12px;
+        }
+
+        .new-arrival-price {
+            font-size: 14px;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            font-size: 8px;
+        }
+
+        .product-card.sold-out .product-image-wrapper::after {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .search-results {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 10px;
+        }
     }
 </style>
 
-    <!-- Hero Section -->
-    {% if not query %}
-    <section class="hero-section">
-        <!-- Hero Banner Image -->
-        <div class="hero-background">
-            <picture>
-                <source srcset="{% static 'store/images/hero/hero-desktop.png' %}" media="(min-width: 1px)">
-                <img src="{% static 'store/images/hero/hero-desktop.png' %}" alt="MOTIONS - Premium Sportswear Collection">
-            </picture>
+<!-- Hero Section -->
+{% if not query %}
+<section class="hero-section">
+    <!-- Hero Banner Image -->
+    <div class="hero-background">
+        <picture>
+            <source srcset="{% static 'store/images/hero/hero-desktop.png' %}" media="(min-width: 1px)">
+            <img src="{% static 'store/images/hero/hero-desktop.png' %}" alt="MOTIONS - Premium Sportswear Collection">
+        </picture>
+    </div>
+
+    <!-- Hero Content - Shop Now Button -->
+    <div class="hero-content">
+        <a href="#products" class="btn-hero">Shop Now</a>
+    </div>
+</section>
+{% endif %}
+
+<div class="container" id="products">
+    <!-- Search Results -->
+    {% if query %}
+    <div class="search-results d-flex justify-content-between align-items-center">
+        <div>
+            <h5>Search Results for "{{ query }}"</h5>
+            <small class="text-muted">{{ products|length }} products found</small>
         </div>
-
-        <!-- Hero Content - Shop Now Button -->
-        <div class="hero-content">
-            <a href="#products" class="btn-hero">Shop Now</a>
+        <a href="{% url 'product_list' %}" class="clear-search">Clear</a>
+    </div>
+    {% else %}
+    <!-- New Arrivals Section -->
+    {% with new_arrivals=products|dictsortreversed:"created_date" %}
+    {% if new_arrivals %}
+    <div class="new-arrivals-section">
+        <div class="section-header">
+            <h2 class="section-title">New Arrivals</h2>
         </div>
-    </section>
-    {% endif %}
-
-    <div class="container" id="products">
-        <!-- Search Results -->
-        {% if query %}
-        <div class="search-results d-flex justify-content-between align-items-center">
-            <div>
-                <h5>Search Results for "{{ query }}"</h5>
-                <small class="text-muted">{{ products|length }} products found</small>
-            </div>
-            <a href="{% url 'product_list' %}" class="clear-search">Clear</a>
-        </div>
-        {% else %}
-        <!-- New Arrivals Section -->
-        {% with new_arrivals=products|dictsortreversed:"created_date" %}
-            {% if new_arrivals %}
-            <div class="new-arrivals-section">
-                <div class="section-header">
-                    <h2 class="section-title">New Arrivals</h2>
-                </div>
-                <div class="new-arrivals-wrapper">
-                    <button class="nav-arrow prev" id="newArrivalsPrev">‹</button>
-                    <div class="new-arrivals-scroll" id="newArrivalsScroll">
-                        {% for product in new_arrivals %}
-                            {% if product.is_new_arrival and product.is_in_stock %}
-                            <div class="product-card product-card-new-arrival">
-                                {% if product.image %}
-                                <div class="product-image-wrapper">
-                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-
-                                    <!-- Badges -->
-                                    <div class="product-badges">
-                                        {% if product.is_new_arrival %}
-                                            <span class="badge badge-new">NEW IN</span>
-                                        {% endif %}
-                                    </div>
-
-                                    <div class="quick-actions">
-                                        <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
-                                            <span>Quick View</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                {% endif %}
-
-                                <div class="product-info">
-                                    <div class="product-brand">MOTIONS</div>
-                                    <a href="{% url 'product_detail' product.id %}" class="product-name">{{ product.name }}</a>
-                                    <div class="product-price">{{ product.price }} QAR</div>
-                                    <a href="{% url 'product_detail' product.id %}" class="btn-add-to-bag">Add to Bag</a>
-                                </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <button class="nav-arrow next" id="newArrivalsNext">›</button>
-                </div>
-            </div>
-            {% endif %}
-        {% endwith %}
-        {% endif %}
-
-        <!-- Products Section -->
-        <div class="products-section">
-            <div class="section-header">
-                <h2 class="section-title">{% if query %}Results{% else %}Collection{% endif %}</h2>
-                <span class="section-count">{{ products|length }}</span>
-            </div>
-
-            {% if products %}
-            <div class="product-grid">
-                {% for product in products %}
-                <div class="product-card {% if not product.is_in_stock %}sold-out{% endif %}">
+        <div class="new-arrivals-wrapper">
+            <button class="nav-arrow prev" id="newArrivalsPrev" aria-label="Previous">‹</button>
+            <div class="new-arrivals-scroll" id="newArrivalsScroll">
+                {% for product in new_arrivals %}
+                {% if product.is_new_arrival and product.is_in_stock %}
+                <div class="product-card product-card-new-arrival">
                     {% if product.image %}
                     <div class="product-image-wrapper">
                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
 
                         <!-- Badges -->
-                        {% if product.is_in_stock %}
-                            <div class="product-badges">
-                                {% if product.is_new_arrival %}
-                                    <span class="badge badge-new">NEW IN</span>
-                                {% endif %}
-                            </div>
-                        {% else %}
-                            <div class="product-badges">
-                                <span class="badge badge-sold-out">SOLD OUT</span>
-                            </div>
-                        {% endif %}
+                        <div class="product-badges">
+                            {% if product.is_new_arrival %}
+                            <span class="badge badge-new">NEW IN</span>
+                            {% endif %}
+                        </div>
 
                         <div class="quick-actions">
                             <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
@@ -882,91 +894,145 @@
 
                     <div class="product-info">
                         <div class="product-brand">MOTIONS</div>
-
-                        <!-- Rating Stars -->
-                        {% if product.review_count > 0 %}
-                            <div class="rating-stars">
-                                {% with full_stars=product.average_rating|floatformat:0 %}
-                                    {% for i in "12345" %}
-                                        {% if forloop.counter <= full_stars %}★{% else %}<span class="empty">★</span>{% endif %}
-                                    {% endfor %}
-                                {% endwith %}
-                                <span class="rating-count">({{ product.review_count }})</span>
-                            </div>
-                        {% endif %}
-
-                        <a href="{% url 'product_detail' product.id %}" class="product-name">
-                            {{ product.name }}
-                        </a>
+                        <a href="{% url 'product_detail' product.id %}" class="product-name">{{ product.name }}</a>
                         <div class="product-price">{{ product.price }} QAR</div>
-
-                        {% if product.is_in_stock %}
-                            <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
-                                <span>Add to Bag</span>
-                            </a>
-                        {% else %}
-                            <button class="btn-view-product" disabled style="opacity: 0.5; cursor: not-allowed;">
-                                <span>Out of Stock</span>
-                            </button>
-                        {% endif %}
+                        <a href="{% url 'product_detail' product.id %}" class="btn-add-to-bag">Add to Bag</a>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
             </div>
-            {% else %}
-            <div class="empty-state">
-                <h3>No Products Found</h3>
-                <p>
-                    {% if query %}
-                        We couldn't find any products matching "{{ query }}". Try different keywords or <a href="{% url 'product_list' %}">browse all products</a>.
-                    {% else %}
-                        No products available yet. Check back soon!
-                    {% endif %}
-                </p>
-                {% if query %}
-                <a href="{% url 'product_list' %}" class="btn-hero">Browse All Products</a>
-                {% endif %}
-            </div>
-            {% endif %}
+            <button class="nav-arrow next" id="newArrivalsNext" aria-label="Next">›</button>
         </div>
     </div>
+    {% endif %}
+    {% endwith %}
+    {% endif %}
 
-    <script>
-        // New Arrivals Navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            const scrollContainer = document.getElementById('newArrivalsScroll');
-            const prevBtn = document.getElementById('newArrivalsPrev');
-            const nextBtn = document.getElementById('newArrivalsNext');
+    <!-- Products Section -->
+    <div class="products-section">
+        <div class="section-header">
+            <h2 class="section-title">{% if query %}Results{% else %}Collection{% endif %}</h2>
+            <span class="section-count">{{ products|length }}</span>
+        </div>
 
-            if (scrollContainer && prevBtn && nextBtn) {
-                const scrollAmount = 305; // card width (280) + gap (25)
+        {% if products %}
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card {% if not product.is_in_stock %}sold-out{% endif %}">
+                {% if product.image %}
+                <div class="product-image-wrapper">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
 
-                prevBtn.addEventListener('click', function() {
-                    scrollContainer.scrollBy({
-                        left: -scrollAmount,
-                        behavior: 'smooth'
-                    });
+                    <!-- Badges -->
+                    {% if product.is_in_stock %}
+                    <div class="product-badges">
+                        {% if product.is_new_arrival %}
+                        <span class="badge badge-new">NEW IN</span>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="product-badges">
+                        <span class="badge badge-sold-out">SOLD OUT</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="quick-actions">
+                        <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
+                            <span>Quick View</span>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="product-info">
+                    <div class="product-brand">MOTIONS</div>
+
+                    <!-- Rating Stars -->
+                    {% if product.review_count > 0 %}
+                    <div class="rating-stars">
+                        {% with full_stars=product.average_rating|floatformat:0 %}
+                        {% for i in "12345" %}
+                        {% if forloop.counter <= full_stars %}★{% else %}<span class="empty">★</span>{% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                            <span class="rating-count">({{ product.review_count }})</span>
+                    </div>
+                    {% endif %}
+
+                    <a href="{% url 'product_detail' product.id %}" class="product-name">
+                        {{ product.name }}
+                    </a>
+                    <div class="product-price">{{ product.price }} QAR</div>
+
+                    {% if product.is_in_stock %}
+                    <a href="{% url 'product_detail' product.id %}" class="btn-view-product">
+                        <span>Add to Bag</span>
+                    </a>
+                    {% else %}
+                    <button class="btn-view-product" disabled style="opacity: 0.5; cursor: not-allowed;">
+                        <span>Out of Stock</span>
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <h3>No Products Found</h3>
+            <p>
+                {% if query %}
+                We couldn't find any products matching "{{ query }}". Try different keywords or <a
+                    href="{% url 'product_list' %}">browse all products</a>.
+                {% else %}
+                No products available yet. Check back soon!
+                {% endif %}
+            </p>
+            {% if query %}
+            <a href="{% url 'product_list' %}" class="btn-hero">Browse All Products</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // New Arrivals Navigation
+    document.addEventListener('DOMContentLoaded', function () {
+        const scrollContainer = document.getElementById('newArrivalsScroll');
+        const prevBtn = document.getElementById('newArrivalsPrev');
+        const nextBtn = document.getElementById('newArrivalsNext');
+
+        if (scrollContainer && prevBtn && nextBtn) {
+            const scrollAmount = 305; // card width (280) + gap (25)
+
+            prevBtn.addEventListener('click', function () {
+                scrollContainer.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
                 });
+            });
 
-                nextBtn.addEventListener('click', function() {
-                    scrollContainer.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
+            nextBtn.addEventListener('click', function () {
+                scrollContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
                 });
+            });
 
-                // Update arrow visibility on scroll
-                scrollContainer.addEventListener('scroll', function() {
-                    const isAtStart = scrollContainer.scrollLeft <= 0;
-                    const isAtEnd = scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth - 1);
+            // Update arrow visibility on scroll
+            scrollContainer.addEventListener('scroll', function () {
+                const isAtStart = scrollContainer.scrollLeft <= 0;
+                const isAtEnd = scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth - 1);
 
-                    prevBtn.classList.toggle('disabled', isAtStart);
-                    nextBtn.classList.toggle('disabled', isAtEnd);
-                });
+                prevBtn.classList.toggle('disabled', isAtStart);
+                nextBtn.classList.toggle('disabled', isAtEnd);
+            });
 
-                // Initial check
-                scrollContainer.dispatchEvent(new Event('scroll'));
-            }
-        });
-    </script>
+            // Initial check
+            scrollContainer.dispatchEvent(new Event('scroll'));
+        }
+    });
+</script>
 {% endblock %}

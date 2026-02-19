@@ -13,6 +13,7 @@
     .success-container {
         text-align: center;
         max-width: 600px;
+        width: 100%;
         padding: 60px 40px;
         background: #ffffff;
         border: 1px solid #e5e5e5;
@@ -72,6 +73,7 @@
         padding: 10px 0;
         border-bottom: 1px solid #e5e5e5;
         font-size: 14px;
+        gap: 10px;
     }
 
     .detail-row:last-child {
@@ -81,11 +83,14 @@
     .detail-label {
         font-weight: 500;
         color: #000000;
+        flex-shrink: 0;
     }
 
     .detail-value {
         font-weight: 600;
         color: #000000;
+        text-align: right;
+        word-break: break-word;
     }
 
     .btn-continue {
@@ -99,6 +104,7 @@
         letter-spacing: 1px;
         text-decoration: none;
         transition: all 0.3s ease;
+        min-height: 44px;
     }
 
     .btn-continue:hover {
@@ -108,6 +114,8 @@
         text-decoration: none;
         transform: translateY(-2px);
     }
+
+    /* ===== RESPONSIVE ===== */
 
     @media (max-width: 768px) {
         .success-page {
@@ -142,18 +150,25 @@
 
         .detail-row {
             font-size: 13px;
-            flex-direction: column;
-            gap: 5px;
         }
 
         .btn-continue {
             width: 100%;
-            padding: 12px 20px;
-            font-size: 10px;
+            padding: 14px 20px;
+            font-size: 11px;
+            text-align: center;
         }
     }
 
     @media (max-width: 480px) {
+        .success-page {
+            padding: 30px 10px;
+        }
+
+        .success-container {
+            padding: 30px 18px;
+        }
+
         .success-title {
             font-size: 20px;
         }
@@ -166,40 +181,59 @@
         .success-icon i {
             font-size: 35px;
         }
+
+        .success-message {
+            font-size: 13px;
+        }
+
+        .order-details h3 {
+            font-size: 12px;
+        }
+
+        .detail-row {
+            font-size: 12px;
+            padding: 8px 0;
+        }
+
+        .btn-continue {
+            font-size: 10px;
+            padding: 12px 16px;
+        }
     }
 </style>
 
-    <div class="success-page">
-        <div class="success-container">
-            <div class="success-icon">
-                <i class="bi bi-check-lg"></i>
-            </div>
-            <h1 class="success-title">Order Confirmed!</h1>
-            <p class="success-message">
-                Thank you for your order, {{ order.first_name }}! We've received your order and will begin processing it shortly.
-            </p>
-
-            <div class="order-details">
-                <h3>Order Details</h3>
-                <div class="detail-row">
-                    <span class="detail-label">Order Number:</span>
-                    <span class="detail-value">#{{ order.id }}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Date:</span>
-                    <span class="detail-value">{{ order.created|date:"F d, Y" }}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Payment Method:</span>
-                    <span class="detail-value">{{ order.get_payment_method_display }}</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Total:</span>
-                    <span class="detail-value">{{ order.get_total_cost }} QAR</span>
-                </div>
-            </div>
-
-            <a href="{% url 'product_list' %}" class="btn-continue">Continue Shopping</a>
+<div class="success-page">
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="bi bi-check-lg"></i>
         </div>
+        <h1 class="success-title">Order Confirmed!</h1>
+        <p class="success-message">
+            Thank you for your order, {{ order.first_name }}! We've received your order and will begin processing it
+            shortly.
+        </p>
+
+        <div class="order-details">
+            <h3>Order Details</h3>
+            <div class="detail-row">
+                <span class="detail-label">Order Number:</span>
+                <span class="detail-value">#{{ order.id }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Date:</span>
+                <span class="detail-value">{{ order.created|date:"F d, Y" }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Payment Method:</span>
+                <span class="detail-value">{{ order.get_payment_method_display }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Total:</span>
+                <span class="detail-value">{{ order.get_total_cost }} QAR</span>
+            </div>
+        </div>
+
+        <a href="{% url 'product_list' %}" class="btn-continue">Continue Shopping</a>
     </div>
+</div>
 {% endblock %}
